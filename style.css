@@ -1,0 +1,457 @@
+/* =====================================
+   RESET
+===================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Inter',sans-serif;
+}
+
+/* =====================================
+   BODY
+===================================== */
+
+body{
+    background:#030712;
+    position:relative;
+}
+
+/* =====================================
+   BACKGROUND
+===================================== */
+
+.background{
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at 15% 20%, rgba(59,130,246,.25), transparent 30%),
+    radial-gradient(circle at 80% 25%, rgba(168,85,247,.22), transparent 35%),
+    radial-gradient(circle at 50% 80%, rgba(14,165,233,.18), transparent 35%),
+    #030712;
+
+    overflow:hidden;
+}
+
+.background::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+    radial-gradient(
+        rgba(255,255,255,.12) 1px,
+        transparent 1px
+    );
+
+    background-size:70px 70px;
+
+    opacity:.15;
+}
+
+/* =====================================
+   SCENE
+===================================== */
+
+.sphere-scene{
+
+    width:100vw;
+    height:100vh;
+
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    perspective:1600px;
+
+    position:relative;
+    z-index:10;
+}
+
+/* =====================================
+   SPHERE
+===================================== */
+
+#sphere{
+
+    width:650px;
+    height:650px;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+
+    cursor:grab;
+
+    user-select:none;
+
+}
+
+#sphere:active{
+    cursor:grabbing;
+}
+
+/* =====================================
+   BUBBLE
+===================================== */
+
+.bubble{
+
+    position:absolute;
+
+    width:110px;
+    height:110px;
+
+    min-width:110px;
+    min-height:110px;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    background:
+    rgba(255,255,255,.08);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.12);
+
+    transition:
+    transform .45s ease,
+    opacity .45s ease,
+    width .45s ease,
+    height .45s ease,
+    box-shadow .45s ease;
+
+}
+
+/* =====================================
+   GLASS REFLECTION
+===================================== */
+
+.bubble::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:8px;
+    left:15px;
+
+    width:60%;
+    height:22%;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.18);
+
+    filter:blur(10px);
+
+}
+
+/* =====================================
+   CONTENT
+===================================== */
+
+.bubble-content{
+
+    position:relative;
+    z-index:5;
+
+    text-align:center;
+
+    padding:8px;
+
+}
+
+.country{
+
+    font-size:13px;
+    font-weight:700;
+
+    color:white;
+
+    line-height:1.2;
+
+}
+
+.city{
+
+    margin-top:3px;
+
+    font-size:10px;
+
+    color:
+    rgba(255,255,255,.65);
+
+}
+
+.time{
+
+    margin-top:6px;
+
+    font-size:15px;
+    font-weight:800;
+
+    color:white;
+
+}
+
+/* =====================================
+   ACTIVE BUBBLE
+===================================== */
+
+.bubble.active{
+
+    width:170px;
+    height:170px;
+
+    min-width:170px;
+    min-height:170px;
+
+    z-index:9999;
+
+    background:
+    rgba(255,255,255,.12);
+
+    border:
+    1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+    0 15px 50px rgba(0,0,0,.35);
+
+}
+
+.bubble.active .country{
+
+    font-size:22px;
+
+}
+
+.bubble.active .city{
+
+    font-size:13px;
+
+}
+
+.bubble.active .time{
+
+    font-size:24px;
+
+}
+
+/* =====================================
+   DEPTH CLASSES
+===================================== */
+
+.front{
+
+    opacity:1;
+
+}
+
+.middle{
+
+    opacity:.65;
+
+}
+
+.back{
+
+    opacity:.28;
+
+}
+
+/* =====================================
+   FLOATING EFFECT
+===================================== */
+
+@keyframes float1{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+
+}
+
+.bubble{
+
+    animation:
+    float1 8s ease-in-out infinite;
+
+}
+
+.bubble:nth-child(2){
+    animation-delay:.5s;
+}
+
+.bubble:nth-child(3){
+    animation-delay:1s;
+}
+
+.bubble:nth-child(4){
+    animation-delay:1.5s;
+}
+
+.bubble:nth-child(5){
+    animation-delay:2s;
+}
+
+.bubble:nth-child(6){
+    animation-delay:2.5s;
+}
+
+.bubble:nth-child(7){
+    animation-delay:3s;
+}
+
+.bubble:nth-child(8){
+    animation-delay:3.5s;
+}
+
+.bubble:nth-child(9){
+    animation-delay:4s;
+}
+
+.bubble:nth-child(10){
+    animation-delay:4.5s;
+}
+
+.bubble:nth-child(11){
+    animation-delay:5s;
+}
+
+.bubble:nth-child(12){
+    animation-delay:5.5s;
+}
+
+.bubble:nth-child(13){
+    animation-delay:6s;
+}
+
+.bubble:nth-child(14){
+    animation-delay:6.5s;
+}
+
+.bubble:nth-child(15){
+    animation-delay:7s;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:1000px){
+
+    #sphere{
+
+        width:520px;
+        height:520px;
+
+    }
+
+    .bubble{
+
+        width:90px;
+        height:90px;
+
+        min-width:90px;
+        min-height:90px;
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    #sphere{
+
+        width:400px;
+        height:400px;
+
+    }
+
+    .bubble{
+
+        width:75px;
+        height:75px;
+
+        min-width:75px;
+        min-height:75px;
+
+    }
+
+    .country{
+
+        font-size:10px;
+
+    }
+
+    .city{
+
+        display:none;
+
+    }
+
+    .time{
+
+        font-size:12px;
+
+    }
+
+    .bubble.active{
+
+        width:120px;
+        height:120px;
+
+        min-width:120px;
+        min-height:120px;
+
+    }
+
+}
+
+@media(max-width:500px){
+
+    #sphere{
+
+        width:320px;
+        height:320px;
+
+    }
+
+}
